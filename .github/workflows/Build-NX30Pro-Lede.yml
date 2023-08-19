@@ -214,6 +214,7 @@ jobs:
 
         # 常用软件包:
         cat >> .config <<EOF
+        CONFIG_PACKAGE_autocore-arm=y
         # CONFIG_DEFAULT_coremark is not set
         # CONFIG_PACKAGE_samba4-libs is not set
         # CONFIG_PACKAGE_samba4-server is not set
