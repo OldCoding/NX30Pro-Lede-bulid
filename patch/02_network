@@ -64,10 +64,8 @@ mediatek_setup_macs()
 		wan_mac=$(macaddr_add $(cat /sys/class/net/eth0/address) 1)
 		;;
 	h3c,magic-nx30-pro)
-		lan_mac_offset="0x2A"
-		wan_mac_offset="0x24"
-		wan_mac=$(mtd_get_mac_binary Factory $wan_mac_offset)
-		lan_mac=$(mtd_get_mac_binary Factory $lan_mac_offset)
+		wan_mac=$(mtd_get_mac_binary "Factory" 0x24)
+		lan_mac=$(mtd_get_mac_binary "Factory" 0x2A)
 		label_mac=$wan_mac
 		;;
 	qihoo,360t7)
