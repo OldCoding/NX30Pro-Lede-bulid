@@ -229,7 +229,7 @@ jobs:
         rm -rf packages
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
         echo "::set-output name=status::success"
-        echo "::set-output name=release_tag::$(date +"%Y.%m.%d-%H%M" mini)"
+        echo "::set-output name=release_tag::$(date +"%Y.%m.%d-%H%M")"
 
     - name: Calculate MD5
       run: |
@@ -252,7 +252,7 @@ jobs:
         name: R${{ steps.organize.outputs.release_tag }} for NX30Pro
         allowUpdates: true
         removeArtifacts: true
-        tag: ${{ steps.organize.outputs.release_tag }}
+        tag: ${{ steps.organize.outputs.release_tag }}mini
         commit: main
         token: ${{ secrets.GITHUB_TOKEN }}
         artifacts: ${{ env.FIRMWARE }}/*
