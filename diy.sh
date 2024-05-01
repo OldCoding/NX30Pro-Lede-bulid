@@ -13,9 +13,9 @@ svn_export() {
 
 
 # 删除冲突软件和依赖
-rm -rf feeds/packages/lang/golang 
+#rm -rf feeds/packages/lang/golang 
 rm -rf feeds/luci/applications/luci-app-pushbot feeds/luci/applications/luci-app-serverchan
-git clone https://github.com/sbwml/packages_lang_golang feeds/packages/lang/golang
+#git clone https://github.com/sbwml/packages_lang_golang feeds/packages/lang/golang
 # 下载插件
 git clone https://github.com/zzsj0928/luci-app-pushbot package/luci-app-pushbot
 git clone --depth 1 https://github.com/fw876/helloworld package/helloworld
