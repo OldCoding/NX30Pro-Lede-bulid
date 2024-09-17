@@ -71,7 +71,11 @@ jobs:
         prefix: ${{ github.workspace }}/openwrt
 
     - name: Update feeds
-      run: cd openwrt && ./scripts/feeds update -a && ./scripts/feeds install -a
+      run: |
+        cd openwrt
+        sed -i ':a;N;$!ba;s/\/luci/\/luci.git;openwrt-23.05/g' feeds.conf.default
+        ./scripts/feeds update -a 
+        ./scripts/feeds install -a
 
     - name: File Diy Patch
       run: |
@@ -142,6 +146,7 @@ jobs:
         CONFIG_PACKAGE_luci-app-autoreboot=y
         CONFIG_PACKAGE_luci-app-ddns=y
         CONFIG_PACKAGE_luci-app-filetransfer=y
+        CONFIG_PACKAGE_luci-app-filebrowser=y
         CONFIG_PACKAGE_luci-app-nlbwmon=y
         CONFIG_PACKAGE_luci-app-firewall=y
         CONFIG_PACKAGE_luci-app-ssr-plus=y
@@ -165,7 +170,6 @@ jobs:
         cat >> .config <<EOF
         CONFIG_PACKAGE_luci-theme-argon=y
         CONFIG_PACKAGE_luci-app-argon-config=y
-        CONFIG_PACKAGE_luci-theme-design=y
         EOF
 
         # 常用软件包:
