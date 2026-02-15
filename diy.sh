@@ -35,6 +35,9 @@ git clone --depth 1 https://github.com/pymumu/luci-app-smartdns feeds/luci/appli
 git clone --depth 1 https://github.com/pymumu/openwrt-smartdns feeds/packages/net/smartdns
 svn_export "main" "luci-app-passwall" "package/luci-app-passwall" "https://github.com/Openwrt-Passwall/openwrt-passwall"
 
+mv ./package/adguardhome/* ./package/ && rm -rf ./package/adguardhome
+mv ./package/openlist2/* ./package/ && rm -rf ./package/openlist2
+
 # 编译 po2lmo (如果有po2lmo可跳过)
 #pushd package/luci-app-openclash/tools/po2lmo
 #make && sudo make install
@@ -50,16 +53,16 @@ sed -i "s|services|network|g" feeds/luci/applications/luci-app-nlbwmon/root/usr/
 sed -i "s|qidian|bilibili|g" feeds/luci/applications/luci-app-serverchan/root/usr/share/serverchan/serverchan
 find ./ | grep Makefile | grep v2ray-geodata | xargs rm -f
 # 个性化设置
-cd package
 sed -i "s/(\(luciversion || ''\))/(\1) + (' \/ Wing build $(TZ=UTC-8 date "+%Y.%m.%d")')/g" $(find ./feeds/luci/modules/luci-mod-status/ -type f -name "10_system.js")
 sed -i "s/LEDE/NX30Pro/" package/base-files/files/bin/config_generate
 sed -i "/ntp/d" package/lean/default-settings/files/zzz-default-settings
-sed -i "/firewall\.user/d" lean/default-settings/files/zzz-default-settings
+sed -i "/firewall\.user/d" package/lean/default-settings/files/zzz-default-settings
 sed -i "/openwrt_luci/d" package/lean/default-settings/files/zzz-default-settings
 sed -i "/openwrt_release/d" package/lean/default-settings/files/zzz-default-settings
 sed -i "s/encryption=.*/encryption=sae-mixed/g" package/kernel/mac80211/files/lib/wifi/mac80211.sh
 sed -i "s/country=.*/country=CN/g" package/kernel/mac80211/files/lib/wifi/mac80211.sh
 sed -i '186i \\t\t\tset wireless.default_radio${devidx}.key=123456789' package/kernel/mac80211/files/lib/wifi/mac80211.sh
+cd package
 # 更新passwall规则
 curl -sfL -o ./luci-app-passwall/root/usr/share/passwall/rules/gfwlist https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/gfw.txt
 #AdguardHome
@@ -74,5 +77,4 @@ curl -sfL -o ./luci-app-passwall/root/usr/share/passwall/rules/gfwlist https://r
 #/tmp/upx-${upx_latest_ver}-amd64_linux/upx --ultra-brute /tmp/AdGuardHome/AdGuardHome > /dev/null 2>&1
 #mv /tmp/AdGuardHome/AdGuardHome ./ && rm -rf /tmp/AdGuardHome
 cd $GITHUB_WORKSPACE/openwrt && cd feeds/luci/applications/luci-app-wrtbwmon
-sed -i 's/ selected=\"selected\"//g' ./luasrc/view/wrtbwmon/wrtbwmon.htm && sed -i 's/\"1\"/\"1\" selected=\"selected\"/g' ./luasrc/view/wrtbwmon/wrtbwmon.htm
-sed -i 's/interval: 5/interval: 1/g' ./htdocs/luci-static/wrtbwmon/wrtbwmon.js
+
