@@ -26,7 +26,7 @@ git clone --depth 1 https://github.com/sbwml/packages_lang_golang feeds/packages
 git clone --depth 1 https://github.com/Openwrt-Passwall/openwrt-passwall-packages package/openwrt-passwall-packages
 git clone --depth 1 https://github.com/tty228/luci-app-wechatpush package/luci-app-wechatpush
 git clone --depth 1 https://github.com/fw876/helloworld package/helloworld
-git clone --depth 1 https://github.com/sbwml/luci-app-openlist2 package/openlist2
+git clone --depth 1 https://github.com/sbwml/luci-app-openlist2 package/openlist
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall-packages package/openwrt-passwall-packages
 git clone --depth 1 https://github.com/sirpdboy/luci-app-adguardhome package/adguardhome
 git clone --depth 1 https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
@@ -36,7 +36,7 @@ git clone --depth 1 https://github.com/pymumu/openwrt-smartdns feeds/packages/ne
 svn_export "main" "luci-app-passwall" "package/luci-app-passwall" "https://github.com/Openwrt-Passwall/openwrt-passwall"
 
 mv ./package/adguardhome/* ./package/ && rm -rf ./package/adguardhome
-mv ./package/openlist2/* ./package/ && rm -rf ./package/openlist2
+mv ./package/openlist/* ./package/ && rm -rf ./package/openlist
 
 # 编译 po2lmo (如果有po2lmo可跳过)
 #pushd package/luci-app-openclash/tools/po2lmo
@@ -48,10 +48,6 @@ sed -i "s|services|nas|g" package/luci-app-openlist2/root/usr/share/luci/menu.d/
 sed -i "s|services|system|g" feeds/luci/applications/luci-app-ttyd/root/usr/share/luci/menu.d/luci-app-ttyd.json
 sed -i "s|services|network|g" feeds/luci/applications/luci-app-nlbwmon/root/usr/share/luci/menu.d/luci-app-nlbwmon.json
 
-
-# 微信推送
-sed -i "s|qidian|bilibili|g" feeds/luci/applications/luci-app-serverchan/root/usr/share/serverchan/serverchan
-find ./ | grep Makefile | grep v2ray-geodata | xargs rm -f
 # 个性化设置
 sed -i "s/(\(luciversion || ''\))/(\1) + (' \/ Wing build $(TZ=UTC-8 date "+%Y.%m.%d")')/g" $(find ./feeds/luci/modules/luci-mod-status/ -type f -name "10_system.js")
 sed -i "s/LEDE/NX30Pro/" package/base-files/files/bin/config_generate
@@ -76,5 +72,4 @@ curl -sfL -o ./luci-app-passwall/root/usr/share/passwall/rules/gfwlist https://r
 #xz -d -c /tmp/upx-${upx_latest_ver}-amd64_linux.tar.xz | tar -x -C "/tmp"
 #/tmp/upx-${upx_latest_ver}-amd64_linux/upx --ultra-brute /tmp/AdGuardHome/AdGuardHome > /dev/null 2>&1
 #mv /tmp/AdGuardHome/AdGuardHome ./ && rm -rf /tmp/AdGuardHome
-cd $GITHUB_WORKSPACE/openwrt && cd feeds/luci/applications/luci-app-wrtbwmon
 
