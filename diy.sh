@@ -22,14 +22,11 @@ rm -rf feeds/packages/net/smartdns
 find ./ | grep Makefile | grep v2ray-geodata | xargs rm -f
 git clone --depth 1 https://github.com/sbwml/packages_lang_golang feeds/packages/lang/golang
 # 下载插件
-git clone --depth 1 https://github.com/Openwrt-Passwall/openwrt-passwall-packages package/openwrt-passwall-packages
-git clone --depth 1 https://github.com/tty228/luci-app-wechatpush package/luci-app-wechatpush
 git clone --depth 1 https://github.com/fw876/helloworld package/helloworld
 git clone --depth 1 https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
 git clone --depth 1 https://github.com/jerrykuku/luci-app-argon-config package/luci-app-argon-config
 git clone --depth 1 https://github.com/pymumu/luci-app-smartdns feeds/luci/applications/luci-app-smartdns
 git clone --depth 1 https://github.com/pymumu/openwrt-smartdns feeds/packages/net/smartdns
-svn_export "main" "luci-app-passwall" "package/luci-app-passwall" "https://github.com/Openwrt-Passwall/openwrt-passwall"
 
 
 # 编译 po2lmo (如果有po2lmo可跳过)
