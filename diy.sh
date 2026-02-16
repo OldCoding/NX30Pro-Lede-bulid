@@ -17,7 +17,6 @@ rm -rf feeds/packages/lang/golang
 rm -rf feeds/luci/themes/luci-theme-argon
 rm -rf feeds/luci/applications/luci-app-argon-config
 rm -rf feeds/luci/applications/luci-app-serverchan
-rm -rf feeds/luci/applications/luci-app-adguardhome
 rm -rf feeds/luci/applications/luci-app-smartdns
 rm -rf feeds/packages/net/smartdns
 find ./ | grep Makefile | grep v2ray-geodata | xargs rm -f
@@ -26,16 +25,12 @@ git clone --depth 1 https://github.com/sbwml/packages_lang_golang feeds/packages
 git clone --depth 1 https://github.com/Openwrt-Passwall/openwrt-passwall-packages package/openwrt-passwall-packages
 git clone --depth 1 https://github.com/tty228/luci-app-wechatpush package/luci-app-wechatpush
 git clone --depth 1 https://github.com/fw876/helloworld package/helloworld
-git clone --depth 1 https://github.com/sbwml/luci-app-openlist2 package/openlist
-git clone --depth 1 https://github.com/sirpdboy/luci-app-adguardhome package/adguardhome
 git clone --depth 1 https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
 git clone --depth 1 https://github.com/jerrykuku/luci-app-argon-config package/luci-app-argon-config
 git clone --depth 1 https://github.com/pymumu/luci-app-smartdns feeds/luci/applications/luci-app-smartdns
 git clone --depth 1 https://github.com/pymumu/openwrt-smartdns feeds/packages/net/smartdns
 svn_export "main" "luci-app-passwall" "package/luci-app-passwall" "https://github.com/Openwrt-Passwall/openwrt-passwall"
 
-mv ./package/adguardhome/* ./package/ && rm -rf ./package/adguardhome
-mv ./package/openlist/* ./package/ && rm -rf ./package/openlist
 
 # 编译 po2lmo (如果有po2lmo可跳过)
 #pushd package/luci-app-openclash/tools/po2lmo
