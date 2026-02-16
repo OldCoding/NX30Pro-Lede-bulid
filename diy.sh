@@ -49,7 +49,7 @@ sed -i "s/country=.*/country=CN/g" package/kernel/mac80211/files/lib/wifi/mac802
 sed -i '186i \\t\t\tset wireless.default_radio${devidx}.key=123456789' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 cd package
 # 更新passwall规则
-curl -sfL -o ./luci-app-passwall/root/usr/share/passwall/rules/gfwlist https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/gfw.txt
+#curl -sfL -o ./luci-app-passwall/root/usr/share/passwall/rules/gfwlist https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/gfw.txt
 #AdguardHome
 #cd ./package/luci-app-adguardhome/root/usr
 #mkdir -p ./bin/AdGuardHome && cd ./bin/AdGuardHome
