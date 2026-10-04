@@ -173,8 +173,6 @@ jobs:
         CONFIG_PACKAGE_smartdns-ui=y
         CONFIG_PACKAGE_luci-app-ttyd=y
         CONFIG_PACKAGE_luci-app-pushbot=y
-        CONFIG_PACKAGE_luci-app-easytier=Y
-        CONFIG_PACKAGE_easytier=y
         CONFIG_PACKAGE_luci-app-webadmin=y
         CONFIG_PACKAGE_luci-app-ramfree=y
         CONFIG_PACKAGE_luci-app-upnp=y

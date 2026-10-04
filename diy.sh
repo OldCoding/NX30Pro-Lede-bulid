@@ -21,7 +21,6 @@ rm -rf feeds/packages/net/smartdns
 find ./ | grep Makefile | grep v2ray-geodata | xargs rm -f
 # 下载插件
 git clone --depth 1 https://github.com/zzsj0928/luci-app-pushbot package/luci-app-pushbot
-git clone --depth 1 https://github.com/EasyTier/luci-app-easytier package/luci-app-easytier
 git clone --depth 1 https://github.com/fw876/helloworld package/helloworld
 git clone --depth 1 https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
 git clone --depth 1 https://github.com/jerrykuku/luci-app-argon-config package/luci-app-argon-config
